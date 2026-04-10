@@ -1,25 +1,28 @@
 import React from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-import { CheckCircle2, Home } from 'lucide-react';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { Home } from 'lucide-react';
 
 export default function Auth() {
   const [searchParams] = useSearchParams();
   const view = searchParams.get('view') || 'login';
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h2 className="text-[28px] font-bold text-gray-900 tracking-tight">
-            {view === 'register' ? 'Register to Continue' : 'Login to Continue'}
-          </h2>
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#E5F7ED] px-4 py-1.5 text-sm font-medium text-[#1E8A55]">
-            <CheckCircle2 className="h-4 w-4" />
-            {view === 'register' ? 'Free to register and book a service' : 'Free to login and book a service'}
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center bg-[#F8F9FB] px-4 py-12">
+      <div className="w-full max-w-[440px]">
+        {view === 'login' ? (
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1D2B36] mb-2 font-['Inter']">Login to Continue</h2>
+            <p className="text-[15px] text-[#64748B] font-['Inter']">Sign in to access your account</p>
           </div>
-        </div>
+        ) : (
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1D2B36] mb-2 font-['Inter']">Register</h2>
+            <p className="text-[15px] text-[#64748B] font-['Inter']">Join OwtSmart today</p>
+          </div>
+        )}
 
-        <div className="mt-8 bg-white py-8 px-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] sm:rounded-[20px] border border-gray-100">
+        <div className="bg-white py-8 px-6 sm:px-10 rounded-[20px] shadow-[0_2px_20px_rgb(0,0,0,0.04)]">
           {view === 'login' && (
             <div className="space-y-6">
               <div>
@@ -29,7 +32,7 @@ export default function Auth() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -40,7 +43,7 @@ export default function Auth() {
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -50,7 +53,7 @@ export default function Auth() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 rounded-full border-gray-300 text-[#7A40F2] focus:ring-[#7A40F2]"
+                    className="h-4 w-4 rounded border-gray-300 text-[#7A40F2] focus:ring-[#7A40F2]"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-600">
                     Remember me
@@ -64,7 +67,7 @@ export default function Auth() {
                 </div>
               </div>
 
-              <button className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-[15px] font-medium text-white bg-[#E0D4FC] hover:bg-[#D1C0FB] transition-colors">
+              <button className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-[15px] font-medium text-white bg-[#8C52FF] hover:bg-[#7A40F2] transition-colors">
                 Sign In & Continue
               </button>
 
@@ -137,7 +140,7 @@ export default function Auth() {
                 <input
                   type="text"
                   placeholder="Enter your name"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -148,7 +151,7 @@ export default function Auth() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -159,7 +162,7 @@ export default function Auth() {
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -170,7 +173,7 @@ export default function Auth() {
                 <input
                   type="password"
                   placeholder="Confirm your password"
-                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm placeholder-gray-400 focus:border-[#7A40F2] focus:outline-none focus:ring-1 focus:ring-[#7A40F2]"
                 />
               </div>
 
@@ -189,7 +192,10 @@ export default function Auth() {
                 </label>
               </div>
 
-              <button className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-[15px] font-medium text-white bg-[#E0D4FC] hover:bg-[#D1C0FB] transition-colors">
+              <button
+                onClick={() => navigate('/verify-email')}
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-[15px] font-medium text-white bg-[#8C52FF] hover:bg-[#7A40F2] transition-colors"
+              >
                 Create Account
               </button>
 
